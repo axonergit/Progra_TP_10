@@ -5,13 +5,13 @@
 #include <sys/time.h>
 #include "termlib.h"
  
-// Turns terminal line buffering on or off
+
  
 void changemode(int mode)
 {
   static struct termios oldt, newt;
  
-  if ( mode == BUFFERED_OFF )
+  if ( mode == BUFFERED_OFF )       // Turns terminal line buffering on or off
   {
     tcgetattr( STDIN_FILENO, &oldt);
     newt = oldt;

@@ -1,14 +1,16 @@
-#include "display.h"
+#include <stdio.h>
+
+#include "Display.h"
 
 void bienvenida(void)
 {
-    imprimirString("Bienvenido a mi humilde carpa");
-    imprimirString("os invito a jugar un juego...\n");
-    imprimirString("Teneis que adivinar un numero del 0 al %d", MAX_ADIV);
-    imprimirString("pero no va a ser una tarea sencilla");
-    imprimirString("ya que solamente teneis %d segundos", MAX_SEG);
-    imprimirString("y %d intentos\n", MAX_TRY);
-    imprimirString("Presione enter para comenzar y escape para salir\n");
+    printf("Bienvenido a mi humilde programa.\n");
+    printf("Os invito a jugar un juego...\n");
+    printf("Teneis que adivinar un numero del 0 al %d.\n", MAX_NUMBER);
+    printf("Pero no va a ser una tarea sencilla,\n");
+    printf("ya que solamente teneis %d segundos ", (int)MAX_SEC);
+    printf("y %d intentos.\n\n", MAX_TRY);
+    printf("Presione enter para comenzar y escape para salir\n\n");
 }
 
 
