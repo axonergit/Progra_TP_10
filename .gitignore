@@ -52,3 +52,5 @@ Mkfile.old
 dkms.conf
 /TP_10/build/
 /TP_10/dist/
+/TP_10_ALLEGRO/build/
+/TP_10_ALLEGRO/dist/
