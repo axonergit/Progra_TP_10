@@ -2,7 +2,7 @@
 
 #include "Display.h"
 
-void bienvenida(void)
+void bienvenida(void)                               // mensaje de bienvenida
 {
     printf("Bienvenido a mi humilde programa.\n");
     printf("Os invito a jugar un juego...\n");
@@ -14,12 +14,12 @@ void bienvenida(void)
 }
 
 
-void imprimirString(char * string)
+void imprimirString(char * string)                  // funcion que imprime en pantalla un string
 {
     printf("%s\n", string);
 }
 
-void imprimirVar(int var)
+void imprimirVar(int var)                           // funcion que imprime una variable
 {
     printf("%d\n", var);
 }
