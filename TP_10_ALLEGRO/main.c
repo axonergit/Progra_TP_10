@@ -20,8 +20,11 @@ int main(void)
 {
         int error = 0;
         int flagBlink = 0;
+        char posMascara = 0;
+        char * pposMascara;
+        pposMascara = &posMascara;
+        
         puerto_8_t puertoA;
-    
         puertoA.port = 0;
         
         int portSize = TAMANOPUERTO_8_T;
@@ -106,13 +109,18 @@ int main(void)
 	{
 		ALLEGRO_EVENT ev;
                 
+                if(flagBlink){
+                                    flagBlink = blinkAll_On_Leds(&puertoA.port, portSize, array, flagBlink, pposMascara);
+                                    redraw = true;
+                                }
+                
 		if( al_get_next_event(event_queue, &ev) ) //Toma un evento de la cola, VER RETURN EN DOCUMENT.
 		{ 
 			if(ev.type == ALLEGRO_EVENT_TIMER) 
 			{
 				     
                                 if(key_pressed[KEY_B]){
-                                    error = blinkAll_On_Leds(&puertoA.port, portSize, array, flagBlink);
+                                    flagBlink = blinkAll_On_Leds(&puertoA.port, portSize, array, flagBlink, pposMascara);
                                 }
                                 if(key_pressed[KEY_1]) 
                                     error = prenderLed(&puertoA.port, portSize, 0);
@@ -261,7 +269,7 @@ int main(void)
 			}
 		}
  
-		if(redraw && al_is_event_queue_empty(event_queue)) 
+		if(redraw ) 
 		{  
 			redraw = false;
 			al_clear_to_color(al_map_rgb(0,0,0));

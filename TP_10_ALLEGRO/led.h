@@ -29,7 +29,7 @@ int prenderLed(void * posPuerto, unsigned int tamanoPuerto, unsigned int numLed)
     devuelve un 0 en caso de NO haber error.
     devuelve un valor distitno de cero en caso de haber error,
 */
-int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[], int flagBlink);
+int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[], int flagBlink, char * pposMascara);
 
 /*
 ---------------prenderLeds-------------

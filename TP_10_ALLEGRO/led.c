@@ -5,25 +5,26 @@
 int prenderLed(void * posPuerto, unsigned int tamanoPuerto, unsigned int numLed){
     return bitSet(posPuerto, tamanoPuerto , numLed);    //Pongo un bit prendido en el puerto en donde corresponde
 }
-int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[],int flagBlink){
+int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[],int flagBlink, char * pposMascara){
 
-    //Creo mis variables
-    
+     
      int error;
     
      if(flagBlink){
         sleep(1);
-        error = maskOn(posPuerto, tamanoPuerto, array);    //Vuelvo a prenderlos con lo mismo que tenian antes
+        error = maskOn(posPuerto, tamanoPuerto, pposMascara);    //Vuelvo a prenderlos con lo mismo que tenian antes
         flagBlink = 0;
+        
     }
-    
-     array[0] = (*((char *)posPuerto));              //Copio el puerto entero como mascar
-    error = apagarLeds(posPuerto, tamanoPuerto);        //Apago todos los leds
+     else{
+     (*pposMascara) = (*((char *)posPuerto));
+     array[0] = (*((char *)posPuerto));
+     error = apagarLeds(posPuerto, tamanoPuerto);        //Apago todos los leds
     
     flagBlink = 1;                                      
-   
+     }
     
-    return error;
+    return flagBlink;
 }
 
 int apagarLeds(void * posPuerto, unsigned int tamanoPuerto){
