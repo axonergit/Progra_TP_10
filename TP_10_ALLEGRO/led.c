@@ -10,18 +10,21 @@ int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[],i
      
      int error;
     
-     if(flagBlink){
-        sleep(1);
+     if(flagBlink){             //para la segunsda vuelta cuando se pide encender nuevamente los leds
+        sleep(0.5);
         error = maskOn(posPuerto, tamanoPuerto, pposMascara);    //Vuelvo a prenderlos con lo mismo que tenian antes
-        flagBlink = 0;
+        if(error)
+            flagBlink = 0;             //flag necesasrio para indicar que el blink se realizo
+        else
+            flagBlink = 0;
         
     }
-     else{
-     (*pposMascara) = (*((char *)posPuerto));
+     else{                          //ptimera vuelta, solo se apagan los leds y se guarda el valor inicial del puerto
+     (*pposMascara) = (*((char *)posPuerto)); 
      array[0] = (*((char *)posPuerto));
      error = apagarLeds(posPuerto, tamanoPuerto);        //Apago todos los leds
     
-    flagBlink = 1;                                      
+    flagBlink = 1;                   //flag necesario npara indicar segunda vuelta                   
      }
     
     return flagBlink;
